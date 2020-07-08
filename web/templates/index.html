@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if satus == 0 %} <h1>Сервис sshd работает </h1>
+{% elif satus != 1%} <h1>Сервис sshd остановлен </h1>
+{% endif %}
+
+    {% if status_checkbox == 'True'%}
+    <form method="POST" action="/checkbox_status_off">
+        <input  type="checkbox" checked onchange="this.form.submit()" > Включить сервис<BR>
+    </form>
+    <form action="/start_service" method="POST">
+        <p><button type="submit" > Запустить сервис</button></p>
+    </form>
+    <form action="/stop_service" method="POST">
+        <p><button type="submit" > остановить сервис</button></p>
+    </form>
+    <form action="/restart_service" method="POST">
+        <p><button type="submit" > перезапустить сервис</button></p>
+    </form>
+    {% elif status_checkbox == 'False'%}
+
+    <form method="POST" action="/checkbox_status_on">
+        <input  type="checkbox"  onchange="this.form.submit()"> Включить сервис<BR>
+    </form>
+    {% endif %}
+
+</body>
+</html>
